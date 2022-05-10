@@ -1,0 +1,31 @@
+local LocalPlayer = game.Players.LocalPlayer
+local Character = LocalPlayer.Character
+local ClonedPlayer = Character.Humanoid:Clone()
+
+ClonedPlayer.Parent = Character
+Character.Humanoid:Destroy()
+
+for i,v in next, LocalPlayer.Backpack:GetChildren() do
+    if v:IsA("Tool") then
+        v.Parent = Character
+    end
+end
+
+local Tool = Character:FindFirstChildOfClass("Tool")
+
+firetouchinterest(Tool.Handle, game.Players["ZenthicBlaze55"].Character["Torso"], 0)
+
+game:GetService("RunService").Heartbeat:wait()
+
+game.Workspace['FallenPartsDestroyHeight'] = 0 / 0
+game.Workspace['Gravity'] = 1e5
+Character["HumanoidRootPart"].CFrame = Character["HumanoidRootPart"].CFrame - Vector3.new(0, 9e9, 0)
+Character.HumanoidRootPart.Velocity = Vector3.new(0, -9e9, 0)
+
+wait(0.20)
+
+Character:Destroy()
+LocalPlayer.CharacterAdded:Wait()
+
+game.Workspace.Gravity = 200
+             --That will kill the player who said "reset"
