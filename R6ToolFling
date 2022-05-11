@@ -6,7 +6,7 @@ local RootPart = Humanoid.RootPart
 local Handle = Character["BoomBox"].Handle
 local Camera = game.Workspace.Camera
 
-for i,v in next, Character["Wallet"]:GetDescendants() do
+for i,v in next, Character["BoomBox"]:GetDescendants() do
     if v:IsA("Part") then 
         game:GetService("RunService").Heartbeat:connect(function()
             v.Velocity = Vector3.new(0, -26, 0)
