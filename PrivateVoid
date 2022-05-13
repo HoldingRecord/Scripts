@@ -1,12 +1,12 @@
-local Target = "xquisitelycece"
+local Target = "vvmatthxw"
 
 local LocalPlayer = game.Players.LocalPlayer
 local Character = LocalPlayer.Character
 local ClonedPlayer = Character.Humanoid:Clone()
-
+amongus = game:GetService('Players').LocalPlayer
 game.Players[Target].Character.Humanoid:SetStateEnabled("Seated", true)
 game.Players[Target].Character.Humanoid.Sit = false
-
+prev = amongus.Character:WaitForChild('HumanoidRootPart').CFrame
 ClonedPlayer.Parent = Character
 Character.Humanoid:Destroy()
 
@@ -29,6 +29,7 @@ Character.HumanoidRootPart.Velocity = Vector3.new(0, -9e9, 0)
 
 wait(0.20)
 Character:Destroy()
-wait(0.20)
-
-game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+game.Players.LocalPlayer.CharacterAdded:Wait()
+amongus = game.Players.LocalPlayer.Character
+amongus:WaitForChild("Humanoid")
+amongus:WaitForChild('HumanoidRootPart').CFrame = prev
