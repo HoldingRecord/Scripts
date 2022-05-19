@@ -6,40 +6,44 @@ local RootPart = Humanoid.RootPart
 local Handle = Character["BoomBox"].Handle
 local Camera = game.Workspace.Camera
 
-for i,v in next, Character["BoomBox"]:GetDescendants() do
-    if v:IsA("Part") then 
-        game:GetService("RunService").Heartbeat:connect(function()
-            v.Velocity = Vector3.new(0, -26, 0)
-        end)
+for i, v in next, Character["BoomBox"]:GetDescendants() do
+    if v:IsA("Part") then
+        game:GetService("RunService").Heartbeat:connect(
+            function()
+                v.Velocity = Vector3.new(0, -26, 0)
+            end
+        )
     end
 end
 
-game:GetService("RunService").Heartbeat:connect(function()
-    game.Players.LocalPlayer.ReplicationFocus = workspace
-    sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius", math.huge)
-    sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius", math.huge)
-end)
+game:GetService("RunService").Heartbeat:connect(
+    function()
+        game.Players.LocalPlayer.ReplicationFocus = workspace
+        sethiddenproperty(game.Players.LocalPlayer, "MaximumSimulationRadius", math.huge)
+        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+    end
+)
 
 function Move(p)
-    BP = Instance.new('BodyPosition', p)
-    BP.Name = 'BP'
+    BP = Instance.new("BodyPosition", p)
+    BP.Name = "BP"
     BP.P = 1e5
     BP.D = 1e5
     BP.MaxForce = Vector3.new(9e9, 9e9, 9e9)
 end
 
 function AddFling(p, Strength)
-    BAV = Instance.new('BodyAngularVelocity', p)
+    BAV = Instance.new("BodyAngularVelocity", p)
     BAV.AngularVelocity = Vector3.new(Strength, Strength, Strength)
     BAV.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
 end
 
 wait(0.50)
-Character['Right Arm']:BreakJoints()
-Character['Right Arm']:Remove()
+Character["Right Arm"]:BreakJoints()
+Character["Right Arm"]:Remove()
 
 wait()
-for _,v in next, Player.Backpack:GetDescendants() do
+for _, v in next, Player.Backpack:GetDescendants() do
     if v:IsA("Tool") then
         v.Parent = Player.Character
     end
@@ -53,16 +57,27 @@ repeat
     game:GetService("RunService").Heartbeat:wait()
     Handle.CanCollide = false
 
-    pcall(function()
-        for _, v in pairs(game.Players:GetChildren()) do
-            if v ~= Player and v.Character:FindFirstChildOfClass("Humanoid").Sit == false and v.Character and v.Character:FindFirstChildOfClass("Humanoid").FloorMaterial ~= Enum.Material.Air then
-                spawn(function() pcall(function()
-                Handle.BP.Position = v.Character["HumanoidRootPart"].Position
-                Handle.Position = v.Character["HumanoidRootPart"].Position
-                end) end)
-                game:GetService("RunService").Heartbeat:wait()
-                wait(0.06)
+    pcall(
+        function()
+            for _, v in pairs(game.Players:GetChildren()) do
+                if
+                    v ~= Player and v.Character:FindFirstChildOfClass("Humanoid").Sit == false and v.Character and
+                        v.Character:FindFirstChildOfClass("Humanoid").FloorMaterial ~= Enum.Material.Air
+                 then
+                    spawn(
+                        function()
+                            pcall(
+                                function()
+                                    Handle.BP.Position = v.Character["HumanoidRootPart"].Position
+                                    Handle.Position = v.Character["HumanoidRootPart"].Position
+                                end
+                            )
+                        end
+                    )
+                    game:GetService("RunService").Heartbeat:wait()
+                    wait(0.06)
+                end
             end
         end
-    end)
+    )
 until Character.Humanoid.Health == 0
