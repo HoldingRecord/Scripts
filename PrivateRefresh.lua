@@ -12,10 +12,10 @@ game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None"
 wait()
 Location = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 wait()
-local prt = Instance.new("Model", workspace);
-Instance.new("Part", prt).Name="Torso";
-Instance.new("Part", prt).Name="Head";
-Instance.new("Humanoid", prt).Name="Humanoid";
-game.Players.LocalPlayer.Character=prt
-game:GetService('Workspace'):WaitForChild(amongus.Name) then
+local prt = Instance.new("Model", workspace)
+Instance.new("Part", prt).Name = "Torso"
+Instance.new("Part", prt).Name = "Head"
+Instance.new("Humanoid", prt).Name = "Humanoid"
+game.Players.LocalPlayer.Character = prt
+game:GetService("Workspace"):WaitForChild(amongus.Name)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Location
