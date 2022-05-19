@@ -1,17 +1,16 @@
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-      if v.ClassName == "Tool" then
-      v.CanBeDropped = true
-      v.Parent = game.Players.LocalPlayer.Character
-      wait()
-      v.Parent = workspace.Terrain
-      amongus = game:GetService('Players').LocalPlayer
-      prev = amongus.Character:WaitForChild('HumanoidRootPart').CFrame
-      amongus.Character.Parent = workspace.Terrain
-      amongus.Character:Destroy()
+for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    if v.ClassName == "Tool" then
+        v.CanBeDropped = true
+        v.Parent = game.Players.LocalPlayer.Character
+        wait()
+        v.Parent = workspace.Terrain
+
+        prev = game.Players.LocalPlayer.Character.Character:WaitForChild("HumanoidRootPart").CFrame
+        game.Players.LocalPlayer.Character.Character.Parent = workspace.Terrain
+        game.Players.LocalPlayer.Character.Character:Destroy()
         game.Players.LocalPlayer.Character = nil
         game.Players.LocalPlayer.CharacterAdded:Wait()
-        amongus = game.Players.LocalPlayer.Character
-        amongus:WaitForChild("Humanoid")
-        amongus:WaitForChild('HumanoidRootPart').CFrame = prev
-end
+        game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+        game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = prev
+    end
 end
