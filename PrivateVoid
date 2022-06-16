@@ -1,11 +1,11 @@
-local Target = "vvmatthxw"
+local Textbox = "vvmatthxw"
 
 local LocalPlayer = game.Players.LocalPlayer
 local Character = LocalPlayer.Character
 local ClonedPlayer = Character.Humanoid:Clone()
 wait()
-game.Players[Target].Character.Humanoid:SetStateEnabled("Seated", true)
-game.Players[Target].Character.Humanoid.Sit = false
+Textbox.Character.Humanoid:SetStateEnabled("Seated", true)
+Textbox.Character.Humanoid.Sit = false
 prev = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
 ClonedPlayer.Parent = Character
 Character.Humanoid:Destroy()
@@ -18,7 +18,7 @@ end
 
 local Tool = Character:FindFirstChildOfClass("Tool")
 
-firetouchinterest(Tool.Handle, game.Players[Target].Character["Head"], 0)
+firetouchinterest(Tool.Handle, Textbox.Character["Head"], 0)
 
 game:GetService("RunService").Heartbeat:wait()
 
